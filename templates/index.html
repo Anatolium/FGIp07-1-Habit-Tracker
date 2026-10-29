@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Мой тренер привычек</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="page">
+
+  <header class="topbar">
+    <div>
+      <h1>Мой тренер привычек</h1>
+      <p class="subtitle" id="today-label"></p>
+    </div>
+    <button class="btn btn-ghost" id="settings-toggle" type="button">Настройки</button>
+  </header>
+
+  <div class="alert" id="alert" hidden></div>
+
+  <section class="card question-card">
+    <p class="eyebrow">Ежедневный вопрос</p>
+    <h2 id="question">Удалось сегодня выполнить привычку?</h2>
+    <p class="hint" id="answered-hint" hidden></p>
+    <div class="actions">
+      <button class="btn btn-yes" id="btn-yes" type="button">Да</button>
+      <button class="btn btn-no" id="btn-no" type="button">Нет</button>
+    </div>
+    <div class="motivation" id="motivation" hidden></div>
+  </section>
+
+  <section class="card settings-card" id="settings-card" hidden>
+    <h2>Настройки</h2>
+    <div class="field">
+      <label for="habit-input">Какая привычка отслеживается?</label>
+      <div class="row">
+        <input id="habit-input" type="text" maxlength="120" placeholder="Например, читать 20 минут">
+        <button class="btn btn-primary" id="habit-save" type="button">Сохранить</button>
+      </div>
+    </div>
+    <div class="field">
+      <label for="reminder-input">Время напоминания (только для справки)</label>
+      <div class="row">
+        <input id="reminder-input" type="time">
+        <button class="btn btn-primary" id="reminder-save" type="button">Сохранить</button>
+      </div>
+      <p class="hint">Уведомления не отправляются — время просто сохраняется в настройках.</p>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="stat">
+      <span class="stat-value" id="stat-streak">0</span>
+      <span class="stat-label">Серия дней подряд</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value" id="stat-wins">0</span>
+      <span class="stat-label">Всего успешных дней</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value" id="stat-best">0</span>
+      <span class="stat-label">Лучшая серия</span>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Достижения</h2>
+    <div class="achievements" id="achievements"></div>
+  </section>
+
+  <section class="card">
+    <h2>История за последние 30 дней</h2>
+    <div class="legend">
+      <span><i class="dot done"></i> выполнено</span>
+      <span><i class="dot miss"></i> пропуск</span>
+      <span><i class="dot none"></i> нет ответа</span>
+    </div>
+    <div class="history" id="history"></div>
+    <p class="hint">Прошлые дни доступны только для просмотра.</p>
+  </section>
+
+  <footer class="footer">Данные хранятся локально в файле <code>habits.db</code>.</footer>
+</div>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
