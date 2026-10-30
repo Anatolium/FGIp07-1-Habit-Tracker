@@ -30,7 +30,7 @@ function showAlert(message) {
 }
 
 async function api(url, options) {
-  const response = await fetch(url, {
+  const response = await fetch("/tracker-1" + url, {
     headers: { "Content-Type": "application/json" },
     ...options,
   });
